@@ -1,7 +1,7 @@
 # Alexandria documentation portal — design
 
 - **Date:** 2026-08-21
-- **Repository:** `alexandria-index`
+- **Repository:** `alexandria-docs`
 - **Status:** approved
 
 ## 1. Problem
@@ -13,7 +13,7 @@ that packages both halves together. Each has a long README and a full set of
 requirements documents, but nothing introduces the project as a whole, explains
 how the pieces relate, or tells a newcomer how to install and use it.
 
-`alexandria-index` is an empty repository. It becomes that entry point.
+`alexandria-docs` is an empty repository. It becomes that entry point.
 
 ## 2. Scope
 
@@ -46,7 +46,7 @@ piece of work and is not part of this design.
 ## 3. Site structure
 
 ```
-alexandria-index/
+alexandria-docs/
 ├── go.mod, go.sum              # Docsy pulled as a Hugo Module
 ├── hugo.toml                   # baseURL, Mermaid, menus, repository links
 ├── package.json                # autoprefixer + postcss-cli for Docsy's SCSS
@@ -131,7 +131,7 @@ Docsy is consumed as a Hugo Module, which requires the Go toolchain locally and
 in CI. `.github/workflows/deploy.yml` runs on push to `main`: check out, set up
 Go, set up Hugo extended, `npm ci`, `hugo --minify`, and deploy to GitHub Pages.
 
-`baseURL` is `https://artur-rios.github.io/alexandria-index/`.
+`baseURL` is `https://artur-rios.github.io/alexandria-docs/`.
 
 ## 6. Correctness rule
 
@@ -142,7 +142,7 @@ links out to them instead of asserting it.
 
 ## 7. Assumptions
 
-1. The GitHub remote will be `artur-rios/alexandria-index`. The repository
+1. The GitHub remote will be `artur-rios/alexandria-docs`. The repository
    currently has no remote and no commits; the workflow is written for that
    name, and the owner creates the remote and enables GitHub Pages.
 2. The Go toolchain is installed locally so `hugo server` works.

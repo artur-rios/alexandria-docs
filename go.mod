@@ -1,4 +1,4 @@
-module github.com/artur-rios/alexandria-index
+module github.com/artur-rios/alexandria-docs
 
 go 1.26.7
 

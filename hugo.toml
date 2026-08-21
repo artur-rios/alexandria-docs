@@ -1,4 +1,4 @@
-baseURL = "https://artur-rios.github.io/alexandria-index/"
+baseURL = "https://artur-rios.github.io/alexandria-docs/"
 title = "Alexandria"
 languageCode = "en-us"
 
@@ -35,7 +35,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   copyright = "Artur Rios"
-  github_repo = "https://github.com/artur-rios/alexandria-index"
+  github_repo = "https://github.com/artur-rios/alexandria-docs"
   github_branch = "main"
   offlineSearch = true
 
@@ -62,8 +62,8 @@ disableKinds = ["taxonomy", "term"]
       icon = "fab fa-github"
       desc = "The Flutter desktop front-end and release packaging"
     [[params.links.developer]]
-      name = "alexandria-index"
-      url = "https://github.com/artur-rios/alexandria-index"
+      name = "alexandria-docs"
+      url = "https://github.com/artur-rios/alexandria-docs"
       icon = "fab fa-github"
       desc = "This documentation site"
 

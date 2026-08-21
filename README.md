@@ -1,10 +1,10 @@
-# alexandria-index
+# alexandria-docs
 
 The documentation site for [Alexandria](https://github.com/artur-rios/alexandria-api),
 a single-user personal library that indexes, organises, and surfaces your
 on-disk media and documents.
 
-**[artur-rios.github.io/alexandria-index](https://artur-rios.github.io/alexandria-index/)**
+**[artur-rios.github.io/alexandria-docs](https://artur-rios.github.io/alexandria-docs/)**
 
 This repository contains documentation only. It builds no software and ships no
 installer — the Windows installer executable and the Linux `.deb`, `.AppImage`,
@@ -19,7 +19,7 @@ each of them already bundles the Rust core.
 |---|---|
 | [alexandria-api](https://github.com/artur-rios/alexandria-api) | The Rust core, the REST/JSON server, and the FFI surface. |
 | [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end and the release packaging. |
-| [alexandria-index](https://github.com/artur-rios/alexandria-index) | This site. |
+| [alexandria-docs](https://github.com/artur-rios/alexandria-docs) | This site. |
 
 ## Running it locally
 
@@ -28,8 +28,8 @@ newer, the [Go toolchain](https://go.dev/dl/) — Docsy is consumed as a Hugo
 Module — and Node with npm, for Docsy's PostCSS pipeline.
 
 ```bash
-git clone https://github.com/artur-rios/alexandria-index.git
-cd alexandria-index
+git clone https://github.com/artur-rios/alexandria-docs.git
+cd alexandria-docs
 npm ci
 hugo server
 ```
@@ -45,7 +45,7 @@ hugo --minify
 ## Layout
 
 ```txt
-alexandria-index/
+alexandria-docs/
 ├── hugo.toml                 # site configuration
 ├── go.mod                    # the Docsy theme, as a Hugo Module
 ├── package.json              # autoprefixer + postcss-cli

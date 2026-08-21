@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Turn the empty `alexandria-index` repository into a Hugo site on the Docsy theme that introduces the Alexandria project — overview, architecture with Mermaid diagrams, installation, usage, and a map of the project's repositories — deployed to GitHub Pages.
+**Goal:** Turn the empty `alexandria-docs` repository into a Hugo site on the Docsy theme that introduces the Alexandria project — overview, architecture with Mermaid diagrams, installation, usage, and a map of the project's repositories — deployed to GitHub Pages.
 
 **Architecture:** A static Hugo site. Docsy is consumed as a Hugo Module (Go toolchain required), its SCSS pipeline driven by PostCSS from npm. All content lives under `content/en/` so a `pt-BR` tree can be added later. A GitHub Actions workflow builds on push to `main` and publishes to GitHub Pages.
 
@@ -15,10 +15,10 @@
 - **Repository URLs**, verified against each repository's `origin` remote:
   - `https://github.com/artur-rios/alexandria-api`
   - `https://github.com/artur-rios/alexandria-ui`
-  - `https://github.com/artur-rios/alexandria-index`
+  - `https://github.com/artur-rios/alexandria-docs`
 
   Note: `alexandria-ui/README.md` contains a stale `git clone` URL naming `alexandria-desktop-front`. The remote is `alexandria-ui`. Always use `alexandria-ui`.
-- **`baseURL`** is `https://artur-rios.github.io/alexandria-index/`.
+- **`baseURL`** is `https://artur-rios.github.io/alexandria-docs/`.
 - **Version floors**, copied verbatim from the source repositories: Rust **1.94** or newer (edition 2021); ffmpeg **3.0 to 9.0**; Windows **10 x64** or later; Ubuntu **LTS x64**.
 - **Content language:** English only, under `content/en/`. Site title is `Alexandria`.
 - **Internal links between site pages** use Hugo's `relref` shortcode, so a broken link fails the build rather than shipping.
@@ -74,7 +74,7 @@ winget install GoLang.Go
 Do not hand-write `go.mod`. Let the toolchain resolve and pin the current Docsy release, then record whatever version it produced.
 
 ```bash
-hugo mod init github.com/artur-rios/alexandria-index
+hugo mod init github.com/artur-rios/alexandria-docs
 hugo mod get github.com/google/docsy
 ```
 
@@ -93,7 +93,7 @@ Expected: `package.json`, `package-lock.json`, and `node_modules/` exist.
 - [ ] **Step 5: Write `hugo.toml`**
 
 ```toml
-baseURL = "https://artur-rios.github.io/alexandria-index/"
+baseURL = "https://artur-rios.github.io/alexandria-docs/"
 title = "Alexandria"
 languageCode = "en-us"
 
@@ -130,7 +130,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   copyright = "Artur Rios"
-  github_repo = "https://github.com/artur-rios/alexandria-index"
+  github_repo = "https://github.com/artur-rios/alexandria-docs"
   github_branch = "main"
   offlineSearch = true
 
@@ -157,8 +157,8 @@ disableKinds = ["taxonomy", "term"]
       icon = "fab fa-github"
       desc = "The Flutter desktop front-end and release packaging"
     [[params.links.developer]]
-      name = "alexandria-index"
-      url = "https://github.com/artur-rios/alexandria-index"
+      name = "alexandria-docs"
+      url = "https://github.com/artur-rios/alexandria-docs"
       icon = "fab fa-github"
       desc = "This documentation site"
 
@@ -1008,7 +1008,7 @@ Both repositories carry identically named documents under `docs/initial/` and `d
     |---|---|
     | [alexandria-api](https://github.com/artur-rios/alexandria-api) | The Rust workspace: `alexandria-core` (the domain), `alexandria-http` (the axum REST/JSON server), and `alexandria-ffi` (the C ABI). |
     | [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end, and the release pipeline that packages it together with the core for Windows and Ubuntu. |
-    | [alexandria-index](https://github.com/artur-rios/alexandria-index) | This site. |
+    | [alexandria-docs](https://github.com/artur-rios/alexandria-docs) | This site. |
 
     ## The specifications
 
@@ -1138,7 +1138,7 @@ git commit -m "docs: add the repositories and about pages"
 
 **Interfaces:**
 - Consumes: `hugo.toml`, `go.mod`, and `package-lock.json` from Task 1. The workflow's `npm ci` requires the lockfile to be committed, which Task 1 did.
-- Produces: the deployed site at `https://artur-rios.github.io/alexandria-index/`.
+- Produces: the deployed site at `https://artur-rios.github.io/alexandria-docs/`.
 
 - [ ] **Step 1: Write `.github/workflows/deploy.yml`**
 
@@ -1222,13 +1222,13 @@ jobs:
 
 - [ ] **Step 2: Write `README.md`**
 
-    # alexandria-index
+    # alexandria-docs
 
     The documentation site for [Alexandria](https://github.com/artur-rios/alexandria-api),
     a single-user personal library that indexes, organises, and surfaces your
     on-disk media and documents.
 
-    **[artur-rios.github.io/alexandria-index](https://artur-rios.github.io/alexandria-index/)**
+    **[artur-rios.github.io/alexandria-docs](https://artur-rios.github.io/alexandria-docs/)**
 
     This repository contains documentation only. It builds no software and ships no
     installer — the Windows installer executable and the Linux `.deb`, `.AppImage`,
@@ -1243,7 +1243,7 @@ jobs:
     |---|---|
     | [alexandria-api](https://github.com/artur-rios/alexandria-api) | The Rust core, the REST/JSON server, and the FFI surface. |
     | [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end and the release packaging. |
-    | [alexandria-index](https://github.com/artur-rios/alexandria-index) | This site. |
+    | [alexandria-docs](https://github.com/artur-rios/alexandria-docs) | This site. |
 
     ## Running it locally
 
@@ -1252,8 +1252,8 @@ jobs:
     Module — and Node with npm, for Docsy's PostCSS pipeline.
 
     ```bash
-    git clone https://github.com/artur-rios/alexandria-index.git
-    cd alexandria-index
+    git clone https://github.com/artur-rios/alexandria-docs.git
+    cd alexandria-docs
     npm ci
     hugo server
     ```
@@ -1269,7 +1269,7 @@ jobs:
     ## Layout
 
     ```txt
-    alexandria-index/
+    alexandria-docs/
     ├── hugo.toml                 # site configuration
     ├── go.mod                    # the Docsy theme, as a Hugo Module
     ├── package.json              # autoprefixer + postcss-cli
@@ -1332,8 +1332,8 @@ git commit -m "ci: build and deploy the site to github pages"
 
 These steps cannot be done from the working copy and are the owner's to perform. Report them rather than attempting them.
 
-1. Create `artur-rios/alexandria-index` on GitHub.
-2. `git remote add origin https://github.com/artur-rios/alexandria-index.git` and `git push -u origin main`.
+1. Create `artur-rios/alexandria-docs` on GitHub.
+2. `git remote add origin https://github.com/artur-rios/alexandria-docs.git` and `git push -u origin main`.
 3. In Settings → Pages, set **Source** to **GitHub Actions**.
 4. Confirm the first workflow run succeeds and the site is reachable.
 
