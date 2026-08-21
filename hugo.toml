@@ -21,7 +21,11 @@ disableKinds = ["taxonomy", "term"]
     # Docsy's own shortcodes emit HTML; Goldmark drops it otherwise.
     unsafe = true
   [markup.highlight]
-    style = "tango"
+    # Class-based highlighting, not inline colours: it is what lets the code
+    # blocks follow the light/dark mode chosen in the navbar. The per-mode
+    # Chroma stylesheets come from Docsy, via assets/scss/_styles_project.scss,
+    # so no `style` is set here.
+    noClasses = false
     lineNos = false
 
 [languages]
@@ -43,6 +47,8 @@ disableKinds = ["taxonomy", "term"]
     enable = true
 
   [params.ui]
+    # Light, dark, and an "auto" option that follows the operating system.
+    showLightDarkModeMenu = true
     sidebar_menu_compact = false
     sidebar_search_disable = false
     navbar_logo = false

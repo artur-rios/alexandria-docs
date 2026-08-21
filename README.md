@@ -49,6 +49,8 @@ alexandria-docs/
 ├── hugo.toml                 # site configuration
 ├── go.mod                    # the Docsy theme, as a Hugo Module
 ├── package.json              # autoprefixer + postcss-cli
+├── assets/scss/
+│   └── _styles_project.scss  # light/dark code-block styles
 ├── content/en/
 │   ├── _index.md             # landing page
 │   ├── about/

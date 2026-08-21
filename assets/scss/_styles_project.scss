@@ -1,0 +1,4 @@
+// Chroma emits classes rather than inline colours (markup.highlight.noClasses
+// is false), which lets Docsy ship one code stylesheet per colour mode:
+// "friendly" in light mode, a tuned "native" in dark mode.
+@import 'td/code-dark';
