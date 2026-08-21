@@ -21,7 +21,7 @@ graph TD
     CORE["alexandria-core<br/>Command/Query + repositories + auth"]
     DB[("SQLite")]
     FS["Local filesystem"]
-    AUTH["External auth service<br/>(external mode)"]
+    AUTH["Heimdall<br/>identity API (external mode)"]
 
     FL -->|HTTP / REST-JSON| HTTP
     FL -->|FFI, in process| FFI
@@ -35,6 +35,27 @@ graph TD
 `alexandria-core` follows a Command/Query baseline. Repository and auth-service
 **traits** are what make its handlers unit-testable; `alexandria-http` and
 `alexandria-ffi` add transport and nothing else.
+
+## Who checks the credentials
+
+Exactly one authentication mode is active at runtime.
+
+**Local mode** is what the desktop application uses. Alexandria owns the single
+account itself: registration, login, and recovery through single-use codes, with
+nothing else involved.
+
+**External mode** hands that job to
+[Heimdall](https://github.com/artur-rios/heimdall-api), the identity API this
+project runs alongside, in which Alexandria is registered as an application
+inside a scope. The client logs in against Heimdall directly — completing
+two-factor there if Heimdall asks for it — and then presents the JWT it gets
+back to Alexandria as a bearer token. Alexandria only validates that token and
+the scope it carries; it never sees a password, proxies no login, and gains no
+endpoints of its own.
+
+Heimdall's own documentation — its overview, architecture and sequence
+diagrams, API reference, and requirements — is at
+[artur-rios.github.io/heimdall-api](https://artur-rios.github.io/heimdall-api/).
 
 ## Two ways to deploy it
 

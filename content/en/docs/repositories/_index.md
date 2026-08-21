@@ -14,6 +14,12 @@ Alexandria is three repositories.
 | [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end, and the release pipeline that packages it together with the core for Windows and Ubuntu. |
 | [alexandria-docs](https://github.com/artur-rios/alexandria-docs) | This site. |
 
+One more repository sits next to those three without being part of Alexandria:
+
+| Repository | What it holds |
+|---|---|
+| [heimdall-api](https://github.com/artur-rios/heimdall-api) | The identity API Alexandria validates tokens against in external mode. Its [documentation site](https://artur-rios.github.io/heimdall-api/) covers its overview, architecture, API reference, and requirements. |
+
 ## The specifications
 
 Alexandria is specified before it is built, and both code repositories carry

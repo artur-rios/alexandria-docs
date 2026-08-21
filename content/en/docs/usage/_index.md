@@ -19,6 +19,13 @@ single-use recovery codes**. They are shown once. Save them somewhere outside
 Alexandria; each one gets you back in exactly once, and you can ask for a fresh
 set at any time.
 
+That is the local account the desktop application uses. A server running in
+external mode instead defers to
+[Heimdall](https://github.com/artur-rios/heimdall-api), where the account is
+registered and where verification, password recovery, and two-factor all
+happen; there is nothing to register in Alexandria, and none of this section
+applies. See [Architecture]({{< relref "/docs/architecture" >}}).
+
 ### 2. Register a library folder
 
 Alexandria does not go looking for files on its own. You tell it which folders

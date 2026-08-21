@@ -65,9 +65,23 @@ Being clear about the boundaries is part of the design, not an omission.
 - **No media editing of any kind.** No audio or video re-encoding, no
   transcoding, no image manipulation.
 - **No file management.** Alexandria never moves, copies, or duplicates a file.
-- **No second account.** No sharing, no profiles, no roles.
-- **No mail.** The account's address is a login identifier and nothing else.
-  Account recovery uses single-use codes, not a message.
+- **No second account, no sharing, no profiles, no roles** — inside Alexandria.
+  There is one owner, and every catalog operation belongs to them. The local
+  account the desktop application uses is that one account. In external mode
+  Alexandria accepts anyone
+  [Heimdall](https://github.com/artur-rios/heimdall-api) places in its scope,
+  but they all act as the same single owner: Alexandria keeps no per-person
+  state, draws no distinction between them, and honours none of Heimdall's own
+  roles. Who may be the owner is decided there; what an owner may do is the
+  same either way.
+- **No mail from Alexandria**, in either authentication mode. With the local
+  account the desktop application uses, the address is a login identifier and
+  nothing else, and recovery goes through single-use codes rather than a
+  message. In external mode the account belongs to
+  [Heimdall](https://github.com/artur-rios/heimdall-api), which does send mail
+  — email verification, password recovery, two-factor codes — but it sends it
+  as the identity provider. Alexandria still sends none, and never sees a
+  password. See [Architecture]({{< relref "/docs/architecture" >}}).
 - **No server, no cloud, no synchronisation** in the desktop application. It
   runs entirely on your machine.
 - **No mobile, web, or macOS build.** Windows and Ubuntu only.
