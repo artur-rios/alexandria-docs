@@ -1,0 +1,76 @@
+baseURL = "https://artur-rios.github.io/alexandria-index/"
+title = "Alexandria"
+languageCode = "en-us"
+
+enableGitInfo = false
+enableRobotsTXT = true
+
+# Docsy renders section landing pages from each section's own _index.md and
+# needs the section tree, so no content kind is excluded beyond taxonomies.
+disableKinds = ["taxonomy", "term"]
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.126.0"
+  [[module.imports]]
+    path = "github.com/google/docsy"
+
+[markup]
+  [markup.goldmark.renderer]
+    # Docsy's own shortcodes emit HTML; Goldmark drops it otherwise.
+    unsafe = true
+  [markup.highlight]
+    style = "tango"
+    lineNos = false
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    contentDir = "content/en"
+    weight = 1
+    title = "Alexandria"
+    [languages.en.params]
+      description = "A single-user personal library that indexes, organises, and surfaces your on-disk media and documents."
+
+[params]
+  copyright = "Artur Rios"
+  github_repo = "https://github.com/artur-rios/alexandria-index"
+  github_branch = "main"
+  offlineSearch = true
+
+  [params.mermaid]
+    enable = true
+
+  [params.ui]
+    sidebar_menu_compact = false
+    sidebar_search_disable = false
+    navbar_logo = false
+    breadcrumb_disable = false
+    [params.ui.feedback]
+      enable = false
+
+  [params.links]
+    [[params.links.developer]]
+      name = "alexandria-api"
+      url = "https://github.com/artur-rios/alexandria-api"
+      icon = "fab fa-github"
+      desc = "The Rust core, HTTP server, and FFI surface"
+    [[params.links.developer]]
+      name = "alexandria-ui"
+      url = "https://github.com/artur-rios/alexandria-ui"
+      icon = "fab fa-github"
+      desc = "The Flutter desktop front-end and release packaging"
+    [[params.links.developer]]
+      name = "alexandria-index"
+      url = "https://github.com/artur-rios/alexandria-index"
+      icon = "fab fa-github"
+      desc = "This documentation site"
+
+# Documentation and About add themselves to this menu from their own front
+# matter. Declaring them here as well would render each nav item twice.
+[[menu.main]]
+  name = "GitHub"
+  weight = 50
+  url = "https://github.com/artur-rios/alexandria-api"
+  pre = "<i class='fab fa-github'></i>"

@@ -673,9 +673,11 @@ Prerequisites, version floors, and commands below are copied from `alexandria-ap
     process. There is no server to install, no service to configure, and no second
     component to keep running.
 
-    Releases are published from the front-end repository:
+    Packages are built by the front-end repository's tagged release workflow and
+    are currently available as build artifacts from that workflow run. A
+    published release is not available yet.
 
-    **[Download from alexandria-ui releases](https://github.com/artur-rios/alexandria-ui/releases)**
+    **[alexandria-ui — Actions](https://github.com/artur-rios/alexandria-ui/actions)**
 
     ### Windows
 
@@ -695,9 +697,14 @@ Prerequisites, version floors, and commands below are copied from `alexandria-ap
 
     | Asset | How to install |
     |---|---|
-    | `.deb` | `sudo apt install ./alexandria_<version>_amd64.deb` — it declares the distribution's ffmpeg runtime packages as dependencies, so apt pulls them in. |
+    | `.deb` | `sudo apt install ./alexandria_<version>_amd64.deb` |
     | `.AppImage` | Mark it executable with `chmod +x` and run it. Nothing is installed system-wide. |
     | `.flatpak` | `flatpak install ./alexandria-<version>.flatpak` |
+
+    The Linux packages do not currently bundle or declare ffmpeg. The ffmpeg
+    runtime libraries must already be present on your system, or the application
+    will install and then fail to load the core. If you don't have them,
+    `sudo apt-get install ffmpeg` will pull in what's needed.
 
     ### After installing
 
@@ -1000,7 +1007,7 @@ Both repositories carry identically named documents under `docs/initial/` and `d
     | Repository | What it holds |
     |---|---|
     | [alexandria-api](https://github.com/artur-rios/alexandria-api) | The Rust workspace: `alexandria-core` (the domain), `alexandria-http` (the axum REST/JSON server), and `alexandria-ffi` (the C ABI). |
-    | [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end, and the release pipeline that packages it together with the core for Windows and Linux. |
+    | [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end, and the release pipeline that packages it together with the core for Windows and Ubuntu. |
     | [alexandria-index](https://github.com/artur-rios/alexandria-index) | This site. |
 
     ## The specifications
@@ -1225,9 +1232,10 @@ jobs:
 
     This repository contains documentation only. It builds no software and ships no
     installer — the Windows installer executable and the Linux `.deb`, `.AppImage`,
-    and `.flatpak` packages are produced by
-    [alexandria-ui](https://github.com/artur-rios/alexandria-ui/releases), and each
-    of them already bundles the Rust core.
+    and `.flatpak` packages are built by
+    [alexandria-ui](https://github.com/artur-rios/alexandria-ui/actions)'s tagged
+    release workflow, available as build artifacts from that workflow run, and
+    each of them already bundles the Rust core.
 
     ## The project
 
