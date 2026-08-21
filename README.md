@@ -8,9 +8,10 @@ on-disk media and documents.
 
 This repository contains documentation only. It builds no software and ships no
 installer — the Windows installer executable and the Linux `.deb`, `.AppImage`,
-and `.flatpak` packages are produced by
-[alexandria-ui](https://github.com/artur-rios/alexandria-ui/releases), and each
-of them already bundles the Rust core.
+and `.flatpak` packages are built by
+[alexandria-ui](https://github.com/artur-rios/alexandria-ui/actions)'s tagged
+release workflow, available as build artifacts from that workflow run, and
+each of them already bundles the Rust core.
 
 ## The project
 

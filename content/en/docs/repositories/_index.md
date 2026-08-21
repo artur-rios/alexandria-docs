@@ -11,7 +11,7 @@ Alexandria is three repositories.
 | Repository | What it holds |
 |---|---|
 | [alexandria-api](https://github.com/artur-rios/alexandria-api) | The Rust workspace: `alexandria-core` (the domain), `alexandria-http` (the axum REST/JSON server), and `alexandria-ffi` (the C ABI). |
-| [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end, and the release pipeline that packages it together with the core for Windows and Linux. |
+| [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end, and the release pipeline that packages it together with the core for Windows and Ubuntu. |
 | [alexandria-index](https://github.com/artur-rios/alexandria-index) | This site. |
 
 ## The specifications

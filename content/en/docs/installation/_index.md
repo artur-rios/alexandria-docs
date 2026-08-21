@@ -13,9 +13,11 @@ core** — the Rust library is bundled beside the executable and linked in
 process. There is no server to install, no service to configure, and no second
 component to keep running.
 
-Releases are published from the front-end repository:
+Packages are built by the front-end repository's tagged release workflow and
+are currently available as build artifacts from that workflow run. A
+published release is not available yet.
 
-**[Download from alexandria-ui releases](https://github.com/artur-rios/alexandria-ui/releases)**
+**[alexandria-ui — Actions](https://github.com/artur-rios/alexandria-ui/actions)**
 
 ### Windows
 
@@ -35,9 +37,14 @@ Ubuntu LTS x64.
 
 | Asset | How to install |
 |---|---|
-| `.deb` | `sudo apt install ./alexandria_<version>_amd64.deb` — it declares the distribution's ffmpeg runtime packages as dependencies, so apt pulls them in. |
+| `.deb` | `sudo apt install ./alexandria_<version>_amd64.deb` |
 | `.AppImage` | Mark it executable with `chmod +x` and run it. Nothing is installed system-wide. |
 | `.flatpak` | `flatpak install ./alexandria-<version>.flatpak` |
+
+The Linux packages do not currently bundle or declare ffmpeg. The ffmpeg
+runtime libraries must already be present on your system, or the application
+will install and then fail to load the core. If you don't have them,
+`sudo apt-get install ffmpeg` will pull in what's needed.
 
 ### After installing
 
