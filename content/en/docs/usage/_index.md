@@ -34,12 +34,24 @@ are yours, and it confines itself to those. You can register more than one.
 ### 3. Run the first index
 
 Indexing walks each registered folder, classifies every file it recognises by
-type, hashes its bytes, and extracts type-specific metadata. Large libraries
-take a while the first time.
+type, records what the directory listing already knows about it — name, size,
+and when it was last modified — and reads type-specific metadata out of the
+file's own tags.
 
-Re-run it whenever your folders change — a re-scan runs the same pipeline and
-uses the content hash to tell a changed file from an unchanged one. See
-[Architecture]({{< relref "/docs/architecture" >}}) for the pipeline.
+It does **not** read your files' contents to identify them, so how long a scan
+takes depends on how many files you have rather than how large they are.
+
+A scan runs in the background and you can watch it: it reports how far along it
+is, and you can pause it, pick it up again later, or abandon it. Start a big one
+at **low** priority to keep the application responsive while it works through.
+Closing the application does not lose a scan — it is offered back at the next
+launch.
+
+Re-run a scan whenever your folders change. A re-scan visits everything already
+in the catalog and compares each file's size and modification time; anything
+that has gone is flagged as missing rather than deleted. Your own metadata edits
+are never overwritten. See [Architecture]({{< relref "/docs/architecture" >}})
+for both pipelines.
 
 ## Browsing
 

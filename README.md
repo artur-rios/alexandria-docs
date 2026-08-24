@@ -7,11 +7,12 @@ on-disk media and documents.
 **[artur-rios.github.io/alexandria-docs](https://artur-rios.github.io/alexandria-docs/)**
 
 This repository contains documentation only. It builds no software and ships no
-installer — the Windows installer executable and the Linux `.deb`, `.AppImage`,
-and `.flatpak` packages are built by
-[alexandria-ui](https://github.com/artur-rios/alexandria-ui/actions)'s tagged
-release workflow, available as build artifacts from that workflow run, and
-each of them already bundles the Rust core.
+installer. Every package — the Windows installer, MSIX and portable `.zip`, and
+the Linux `.sh` installer, `.tar.gz`, `.deb`, `.AppImage` and `.flatpak` — is
+built and published as a
+[release](https://github.com/artur-rios/alexandria-ui/releases) by
+[alexandria-ui](https://github.com/artur-rios/alexandria-ui)'s tagged release
+workflow, and each one already bundles the Rust core.
 
 ## The project
 

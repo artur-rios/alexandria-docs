@@ -18,9 +18,9 @@ Two properties shape everything else about it:
 **It is single-user.** One owner, one account. There is no sharing, no second
 profile, no roles, and no multi-tenancy anywhere in the design.
 
-**It does not own your files.** Alexandria stores metadata, a path, and a
-content hash. It never re-encodes, transcodes, duplicates, or relocates a file,
-and it removes one from disk only when you explicitly ask it to.
+**It does not own your files.** Alexandria stores metadata and a path — never
+your file's contents. It never re-encodes, transcodes, duplicates, or relocates
+a file, and it removes one from disk only when you explicitly ask it to.
 
 ## What it handles
 
