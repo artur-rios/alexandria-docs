@@ -24,8 +24,9 @@ workflow, and each one already bundles the Rust core.
 
 ## Running it locally
 
-**Requirements:** [Hugo extended](https://gohugo.io/installation/) 0.126 or
-newer, the [Go toolchain](https://go.dev/dl/) — Docsy is consumed as a Hugo
+**Requirements:** [Hugo extended](https://gohugo.io/installation/) 0.158 or
+newer — the configuration uses `locale` and `languages.*.label`, which arrived
+in that release; CI builds with 0.165.0 — the [Go toolchain](https://go.dev/dl/) — Docsy is consumed as a Hugo
 Module — and Node with npm, for Docsy's PostCSS pipeline.
 
 ```bash
@@ -71,8 +72,13 @@ alongside it without restructuring.
 
 `go.mod` currently pins Docsy to v0.15.0 on purpose. v0.16.0 moved the actual
 theme (`layouts/`, `assets/`) into a git submodule that Go's module zip does
-not include, so it resolves as a Hugo Module but builds no output. Bumping the
-version therefore needs a real check, not just a green `go get`:
+not include, so it resolves as a Hugo Module but builds no output.
+
+**Re-checked 2026-08-24 against v0.16.0, still the latest release: the fault is
+unchanged.** It resolves, then fails at build with `template for shortcode
+"blocks/cover" not found` and writes no `public/`. The pin stays.
+
+Bumping the version therefore needs a real check, not just a green `go get`:
 
 ```bash
 hugo mod get -u github.com/google/docsy

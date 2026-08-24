@@ -1,6 +1,8 @@
 baseURL = "https://artur-rios.github.io/alexandria-docs/"
 title = "Alexandria"
-languageCode = "en-us"
+# `locale`, not the deprecated `languageCode`: Hugo v0.158.0 renamed it and
+# will remove the old spelling.
+locale = "en-us"
 
 enableGitInfo = false
 enableRobotsTXT = true
@@ -12,7 +14,9 @@ disableKinds = ["taxonomy", "term"]
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.126.0"
+    # 0.158.0 is where `locale` and `languages.*.label` arrived, and this
+    # configuration uses both. An older Hugo would not recognise either.
+    min = "0.158.0"
   [[module.imports]]
     path = "github.com/google/docsy"
 
@@ -30,7 +34,8 @@ disableKinds = ["taxonomy", "term"]
 
 [languages]
   [languages.en]
-    languageName = "English"
+    # `label`, not the deprecated `languageName`, renamed in the same release.
+    label = "English"
     contentDir = "content/en"
     weight = 1
     title = "Alexandria"
