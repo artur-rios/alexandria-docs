@@ -13,11 +13,13 @@ core** — the Rust library is bundled beside the executable and linked in
 process. There is no server to install, no service to configure, and no second
 component to keep running.
 
-Packages are built by the front-end repository's tagged release workflow and
-are currently available as build artifacts from that workflow run. A
-published release is not available yet.
+Every tag on the front-end repository publishes a release carrying the
+application for both platforms. Versions below 1.0 are marked as prereleases.
 
-**[alexandria-ui — Actions](https://github.com/artur-rios/alexandria-ui/actions)**
+**[alexandria-ui — Releases](https://github.com/artur-rios/alexandria-ui/releases)**
+
+Every package carries the Rust core, and every package that cannot ask a package
+manager for ffmpeg carries that too. There is nothing else to install.
 
 ### Windows
 
@@ -25,26 +27,39 @@ Windows 10 x64 or later.
 
 | Asset | How to install |
 |---|---|
-| `alexandria-setup-<version>.exe` | Run it. It installs into your own user profile, adds a Start menu entry, and offers a desktop shortcut. |
-| `.msix` | Install through the Windows package installer, if you prefer a packaged app. |
+| `alexandria-setup-<version>.exe` | The installer. Run it — it asks where to install, and replaces an existing installation it finds there or wherever a previous install recorded one. Only the program's own files are removed; your library, catalog, and settings are left alone. |
+| `alexandria-<version>-windows-x64.zip` | The application itself. Unpack it anywhere and run `alexandria.exe`. Nothing is registered, and deleting the folder removes it. |
+| `alexandria.msix` | Published unsigned, and Windows will not install an unsigned MSIX without a trusted certificate. Use the installer unless you have your own signing set up. |
 
-The installer is currently **unsigned**, so Windows SmartScreen will warn on
-first run. Choose *More info* and then *Run anyway* if you trust the source.
+The Windows packages carry an LGPL build of ffmpeg beside the executable.
+
+Packages are **unsigned** — code signing needs a certificate the project does
+not hold yet — so SmartScreen will warn on first run. Choose *More info* and
+then *Run anyway* if you trust the source.
 
 ### Linux
 
 Ubuntu LTS x64.
 
-| Asset | How to install |
-|---|---|
-| `.deb` | `sudo apt install ./alexandria_<version>_amd64.deb` |
-| `.AppImage` | Mark it executable with `chmod +x` and run it. Nothing is installed system-wide. |
-| `.flatpak` | `flatpak install ./alexandria-<version>.flatpak` |
+| Asset | How to install | Where ffmpeg comes from |
+|---|---|---|
+| `alexandria-installer-<version>-linux-x64.sh` | `chmod +x` it and run it. Defaults to `~/.local/share/alexandria`, or `/opt/alexandria` as root, and replaces an existing installation the same way the Windows installer does. `--prefix DIR` and `--yes` skip the questions; `--uninstall` removes what it installed and nothing else. | bundled |
+| `alexandria-<version>-linux-x64.tar.gz` | The application itself. Unpack it and run `./alexandria`. | bundled |
+| `.deb` | `sudo apt install ./alexandria_<version>_amd64.deb` — built for Ubuntu 24.04, whose library names it depends on. | apt |
+| `.AppImage` | Mark it executable with `chmod +x` and run it. Nothing is installed system-wide. | bundled |
+| `.flatpak` | `flatpak install ./alexandria-<version>.flatpak` | the `org.freedesktop.Platform.ffmpeg-full` runtime extension |
 
-The Linux packages do not currently bundle or declare ffmpeg. The ffmpeg
-runtime libraries must already be present on your system, or the application
-will install and then fail to load the core. If you don't have them,
-`sudo apt-get install ffmpeg` will pull in what's needed.
+The installer, the tarball, and the AppImage carry everything the program needs
+— ffmpeg, libmpv, and the libraries those depend on. Only the graphics, sound,
+and C libraries any desktop application already has come from your system.
+
+The `.deb` deliberately does **not** bundle them: depending on the
+distribution's own packages is the entire point of a `.deb`, and a bundled copy
+inside one would shadow the system's and then go unpatched.
+
+Every bundled library's licence travels inside the package in `lib/licenses`,
+with the full list in `lib/licenses/PACKAGES.txt` and the copyleft ones named in
+`lib/licenses/COPYLEFT.tsv`.
 
 ### After installing
 
