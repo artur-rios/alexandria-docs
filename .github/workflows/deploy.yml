@@ -3,6 +3,11 @@ name: Deploy
 on:
   push:
     branches: [main]
+  # Pull requests build the site but do not publish it. Without this the
+  # repository had no check that ran on a pull request at all, so a broken
+  # site could only be discovered after it was already on main -- and a
+  # required status check had nothing to require.
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -11,9 +16,12 @@ permissions:
   id-token: write
 
 # Let a running deployment finish rather than cancelling it mid-publish.
+# Pull request builds get a group per ref instead, so validating one never
+# queues behind a publish, and pushing to a branch supersedes its own earlier
+# build rather than waiting for it.
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('docs-pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 defaults:
   run:
@@ -51,18 +59,34 @@ jobs:
 
       - name: Configure Pages
         id: pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
+      # Two build steps rather than one, because the published site needs the
+      # Pages base URL and a pull request has none to ask for. The check that
+      # matters on a pull request is the same either way: does Hugo build it.
       - name: Build
+        if: github.event_name != 'pull_request'
         run: hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      - name: Build (pull request)
+        if: github.event_name == 'pull_request'
+        run: hugo --minify
+
+      # A build that writes no output is the failure mode the Docsy pin exists
+      # for, and it does not fail the Hugo command -- see the readme.
+      - name: Verify the build produced a site
+        run: test -s public/index.html
+
       - name: Upload the artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
