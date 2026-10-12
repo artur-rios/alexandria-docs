@@ -59,7 +59,11 @@ inside one would shadow the system's and then go unpatched.
 
 Every bundled library's licence travels inside the package in `lib/licenses`,
 with the full list in `lib/licenses/PACKAGES.txt` and the copyleft ones named in
-`lib/licenses/COPYLEFT.tsv`.
+`lib/licenses/COPYLEFT.tsv`. Alexandria's own source code is under the
+[Artur Rios Attribution License](https://github.com/artur-rios/alexandria-api/blob/main/LICENSE);
+the bundled libraries keep their own licences, and a package that bundles the
+copyleft ones is distributed as a combined work subject to their terms
+(GPL-3.0). The Windows packages carry an LGPL build of ffmpeg and no mpv.
 
 ### After installing
 

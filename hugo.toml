@@ -43,7 +43,7 @@ disableKinds = ["taxonomy", "term"]
       description = "A single-user personal library that indexes, organises, and surfaces your on-disk media and documents."
 
 [params]
-  copyright = "Artur Rios"
+  copyright.authors = "Artur Rios | [Artur Rios Attribution License](https://github.com/artur-rios/alexandria-docs/blob/main/LICENSE)"
   github_repo = "https://github.com/artur-rios/alexandria-docs"
   github_branch = "main"
   offlineSearch = true

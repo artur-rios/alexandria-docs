@@ -30,8 +30,10 @@ The domain library, the REST/JSON server, and the C ABI.
 The application, for Windows and Ubuntu.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fa-solid fa-scale-balanced" title="Source available" url="https://github.com/artur-rios/alexandria-api/blob/main/LICENSE" %}}
-The code is public to read. All rights reserved — see the licence for terms.
+{{% blocks/feature icon="fa-solid fa-scale-balanced" title="Open source" url="https://github.com/artur-rios/alexandria-api/blob/main/LICENSE" %}}
+Free and open source under the Artur Rios Attribution License: use, fork,
+modify and extend it, crediting the author. Bundled third-party libraries keep
+their own licences.
 {{% /blocks/feature %}}
 
 {{% /blocks/section %}}
