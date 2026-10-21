@@ -26,7 +26,6 @@ a file, and it removes one from disk only when you explicitly ask it to.
 
 | Kind | Covers |
 |---|---|
-| Audio | Music files, browsed and played in a persistent player |
 | Video | Movies and series, with subtitle and audio track selection |
 | Documents | PDFs and e-books |
 | Comics | Comic book archives, tracked per issue |
@@ -42,11 +41,9 @@ a file, and it removes one from disk only when you explicitly ask it to.
 - Browse the catalog by file type, and search, filter, and sort across all of
   it.
 - Play video with full screen, seeking, subtitle tracks, and audio tracks.
-- Play audio in a persistent player, with a disc, vinyl, or tape animation that
-  turns while an album or artist plays and stops on pause.
 - View PDFs, e-books, comic books, images, saved HTML, and rendered Markdown.
 - Edit Markdown and text files in place, with a live preview.
-- Edit music and video metadata, and rename any file.
+- Edit video metadata, and rename any file.
 - Group files and bookmarks into collections.
 - Track movies and series in watchlists, with per-episode progress.
 - Track books and comics in reading lists, with per-issue progress.
@@ -62,9 +59,10 @@ Brazilian Portuguese and English.
 
 Being clear about the boundaries is part of the design, not an omission.
 
-- **No media editing of any kind.** No audio or video re-encoding, no
+- **No media editing of any kind.** No video re-encoding, no
   transcoding, no image manipulation.
 - **No file management.** Alexandria never moves, copies, or duplicates a file.
+- **No music.** Music lives in Orpheus, a separate project.
 - **No second account, no sharing, no profiles, no roles** — inside Alexandria.
   There is one owner, and every catalog operation belongs to them. The local
   account the desktop application uses is that one account. In external mode

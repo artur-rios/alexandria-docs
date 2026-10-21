@@ -11,13 +11,15 @@ A personal library, built from the files you already have.
 {{< /blocks/cover >}}
 
 {{% blocks/lead %}}
-Alexandria started from a simple frustration: a hard drive full of music,
-films, books, and comics, and no single place to see any of it.
+Alexandria started from a simple frustration: a hard drive full of films,
+books, and comics, and no single place to see any of it.
 
 It is deliberately small in scope. One person, one machine, one library. No
 cloud, no accounts to manage, no synchronisation, and no attempt to become a
 media server. It reads what is already on your disk, records what it finds, and
 gets out of the way.
+
+Music is not part of it: that lives in Orpheus, a separate project.
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" type="row" %}}
