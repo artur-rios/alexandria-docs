@@ -71,6 +71,10 @@ Launch Alexandria and go to [Usage]({{< relref "/docs/usage" >}}). Your catalog
 and settings live in your own user profile, not alongside the application, so
 uninstalling never touches them — and never touches your library files.
 
+**Upgrading from a release that had music** (core 0.4 or earlier): the first
+start deletes the music, playlists, and play history stored in your catalog.
+Your files on disk, music included, are never touched.
+
 ## Build from source
 
 You only need this if you want to work on Alexandria.

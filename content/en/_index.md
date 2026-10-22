@@ -32,7 +32,8 @@ hashes its bytes, and keeps the catalog current across re-scans.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fa-solid fa-play" title="Read and watch" %}}
-Video with seeking, subtitles, and audio tracks. PDFs, e-books, comic books, images, saved HTML, and rendered Markdown.
+Video with seeking, subtitles, and audio tracks. PDFs, e-books, comic books,
+images, saved HTML, and rendered Markdown.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fa-solid fa-layer-group" title="Organise it your way" %}}
