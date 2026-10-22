@@ -19,7 +19,8 @@ cloud, no accounts to manage, no synchronisation, and no attempt to become a
 media server. It reads what is already on your disk, records what it finds, and
 gets out of the way.
 
-Music is not part of it: that lives in Orpheus, a separate project.
+Music is not part of it: that lives in
+[Orpheus](https://github.com/artur-rios/orpheus), a separate project.
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" type="row" %}}

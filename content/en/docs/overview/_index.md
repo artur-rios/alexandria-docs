@@ -59,10 +59,11 @@ Brazilian Portuguese and English.
 
 Being clear about the boundaries is part of the design, not an omission.
 
-- **No media editing of any kind.** No video re-encoding, no
-  transcoding, no image manipulation.
+- **No media editing of any kind.** No video re-encoding, no transcoding, no
+  image manipulation.
 - **No file management.** Alexandria never moves, copies, or duplicates a file.
-- **No music.** Music lives in Orpheus, a separate project.
+- **No music.** Music lives in [Orpheus](https://github.com/artur-rios/orpheus),
+  a separate project.
 - **No second account, no sharing, no profiles, no roles** — inside Alexandria.
   There is one owner, and every catalog operation belongs to them. The local
   account the desktop application uses is that one account. In external mode
