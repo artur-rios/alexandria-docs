@@ -55,7 +55,7 @@ for both pipelines.
 
 ## Browsing
 
-The catalog is organised by file type: music, movies, series, HTML pages,
+The catalog is organised by file type: movies, series, HTML pages,
 Markdown and text notes, PDFs and e-books, comic books, images, and bookmarks.
 
 Each type can be viewed as a **list**, a **detailed list**, or a **grid** —
@@ -67,10 +67,6 @@ work across the whole catalog, not just the type you are currently in.
 **Video.** Full screen, seeking, subtitle track selection, and audio track
 selection.
 
-**Audio.** A persistent player that stays with you as you browse. A disc,
-vinyl, or tape animation turns for the duration of an album or artist and stops
-when you pause.
-
 **Documents and images.** PDFs, e-books, comic books, images, saved HTML pages,
 and rendered Markdown all open inside the application.
 
@@ -81,7 +77,7 @@ Alexandria edits **metadata and text**. It never edits media.
 **Text and Markdown** are edited in place, with a live preview beside the
 editor. Changes are written back to the file on disk.
 
-**Music and video metadata** can be edited from the file's detail view.
+**Video metadata** can be edited from the file's detail view.
 Alexandria rewrites the metadata; it never re-encodes the media.
 
 **Renaming** works on any file and renames it on disk.

@@ -17,8 +17,8 @@ linkTitle: Alexandria
 
 {{% blocks/lead color="primary" %}}
 Alexandria indexes, organises, and surfaces one person's on-disk media and
-documents — audio, movies and series, saved HTML pages, Markdown and text
-files, PDFs and e-books, comic books, images, and browser bookmarks.
+documents — movies and series, saved HTML pages, Markdown and text files,
+PDFs and e-books, comic books, images, and browser bookmarks.
 
 It records metadata plus a path and a content hash. It never re-encodes,
 duplicates, or relocates a file.
@@ -31,9 +31,8 @@ Point Alexandria at a folder. It walks it, classifies every file by type,
 hashes its bytes, and keeps the catalog current across re-scans.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fa-solid fa-play" title="Read, watch, and listen" %}}
-Video with seeking, subtitles, and audio tracks. A persistent audio player.
-PDFs, e-books, comic books, images, saved HTML, and rendered Markdown.
+{{% blocks/feature icon="fa-solid fa-play" title="Read and watch" %}}
+Video with seeking, subtitles, and audio tracks. PDFs, e-books, comic books, images, saved HTML, and rendered Markdown.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fa-solid fa-layer-group" title="Organise it your way" %}}
