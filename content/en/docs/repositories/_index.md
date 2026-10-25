@@ -18,7 +18,7 @@ One more repository sits next to those three without being part of Alexandria:
 
 | Repository | What it holds |
 |---|---|
-| [heimdall-api](https://github.com/artur-rios/heimdall-api) | The identity API Alexandria validates tokens against in external mode. Its [documentation site](https://artur-rios.github.io/heimdall-api/) covers its overview, architecture, API reference, and requirements. |
+| [heimdall-api](https://github.com/artur-rios/heimdall-api) | The identity API Alexandria validates tokens against in external mode. Its [documentation site](https://docs.artur-rios.tech/heimdall-api/) covers its overview, architecture, API reference, and requirements. |
 
 ## The specifications
 

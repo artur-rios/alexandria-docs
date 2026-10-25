@@ -1,4 +1,4 @@
-baseURL = "https://artur-rios.github.io/alexandria-docs/"
+baseURL = "https://docs.artur-rios.tech/alexandria-docs/"
 title = "Alexandria"
 # `locale`, not the deprecated `languageCode`: Hugo v0.158.0 renamed it and
 # will remove the old spelling.
