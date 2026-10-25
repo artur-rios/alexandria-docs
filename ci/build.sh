@@ -14,5 +14,6 @@ cd "$(dirname "$0")/.."
 image="alexandria-docs-site-check:$(date +%s)-$(tr -dc a-z0-9 </dev/urandom | head -c 8)"
 trap 'docker rmi --force "$image" >/dev/null 2>&1 || true' EXIT
 
-# The address the deploy builds for (the stack's PUBLIC_HOST and PUBLIC_PATH), so the checker sees the same links.
-docker build --file Dockerfile --tag "$image"     --build-arg PUBLIC_HOST=docs.artur-rios.tech --build-arg PUBLIC_PATH=/alexandria-docs .
+# The address the deploy builds for (the stack's PUBLIC_HOST and PUBLIC_PATH), so the build uses the same base URL.
+docker build --file Dockerfile --tag "$image" \
+    --build-arg PUBLIC_HOST=docs.artur-rios.tech --build-arg PUBLIC_PATH=/alexandria-docs .
