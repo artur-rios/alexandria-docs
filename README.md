@@ -65,6 +65,8 @@ alexandria-docs/
 │       ├── installation/
 │       ├── usage/
 │       └── repositories/
+├── ci/build.sh               # the pull request check: builds the image
+├── yggdrasil.yml             # what Jenkins checks
 ├── Dockerfile                # builds and serves the site
 ├── .dockerignore
 ├── renovate.json             # dependency updates
@@ -103,6 +105,9 @@ is served at <https://docs.artur-rios.tech/alexandria-docs/>. The image answers
 `/healthz` for the status check. The address comes from the build arguments
 `PUBLIC_HOST` and `PUBLIC_PATH`, which the deploy passes, so the `baseURL` in
 `hugo.toml` only matters for `hugo server`.
+
+Every pull request is checked by Jenkins' `build` check (`yggdrasil.yml`, run by
+`ci/build.sh`), which builds the same image without pushing or running it.
 
 To build the image locally:
 
