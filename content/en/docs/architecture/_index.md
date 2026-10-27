@@ -55,7 +55,7 @@ endpoints of its own.
 
 Heimdall's own documentation — its overview, architecture and sequence
 diagrams, API reference, and requirements — is at
-[artur-rios.github.io/heimdall-api](https://artur-rios.github.io/heimdall-api/).
+[docs.artur-rios.tech/heimdall-api](https://docs.artur-rios.tech/heimdall-api/).
 
 ## Two ways to deploy it
 
