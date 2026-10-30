@@ -1,19 +1,10 @@
 # alexandria-docs
 
-> [!NOTE]
-> This is the real, open-source code of alexandria-docs. Its home is Forgejo, at
-> https://git.techcraftsmen.net/artur-rios/alexandria-docs; the copy on GitHub is a read-only mirror, for viewing only, and
-> its issues and pull requests are not followed. If you want to contribute, email me at
-> arturdev@duck.com.
-
 The documentation site for [Alexandria](https://github.com/artur-rios/alexandria-api),
 a single-user personal library that indexes, organises, and surfaces your
 on-disk media and documents.
 
 **[docs.artur-rios.tech/alexandria-docs](https://docs.artur-rios.tech/alexandria-docs/)**
-
-The repository lives at <https://git.techcraftsmen.net/artur-rios/alexandria-docs>; the copy on GitHub is a
-read-only mirror.
 
 This repository contains documentation only. It builds no software and ships no
 installer. Every package — the Windows installer, MSIX and portable `.zip`, and
@@ -124,3 +115,8 @@ docker run --rm -p 8080:8080 alexandria-docs
 ```
 
 The site is then at <http://localhost:8080/alexandria-docs/>.
+
+## Contributing
+
+The GitHub repository is a read-only mirror for the real, open-source code of alexandria-docs. Its home is Forgejo, at
+https://git.techcraftsmen.net/artur-rios/alexandria-docs. If you want to contribute, e-mail me at arturdev@duck.com.
