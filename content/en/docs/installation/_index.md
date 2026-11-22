@@ -10,8 +10,9 @@ description: >
 
 This is what almost everyone wants. The desktop release **already contains the
 core** — the Rust library is bundled beside the executable and linked in
-process. There is no server to install, no service to configure, and no second
-component to keep running.
+process. There is no server to install, no service to configure, no second
+component to keep running, and no account to create: the application opens
+straight into your library.
 
 Every tag on the front-end repository publishes a release carrying the
 application for both platforms. Versions below 1.0 are marked as prereleases.
@@ -151,29 +152,3 @@ flutter run -d windows
 ```bash
 flutter run -d linux
 ```
-
-### The HTTP server
-
-Only needed if you want the REST/JSON surface rather than the desktop
-application. Configuration is read from `config.toml` at startup, and any key
-can be overridden with an `ALEXANDRIA_*` environment variable.
-
-```bash
-cp config.toml.example config.toml
-cargo run --release -p alexandria-http
-```
-
-It binds to loopback by default. Check it is up:
-
-```bash
-curl http://127.0.0.1:8080/health
-```
-
-The full configuration surface — authentication mode and session TTL, bind
-address, SQLite path, filesystem root, indexing concurrency, soft-delete
-retention, and log level — is documented in
-[`config.toml.example`](https://github.com/artur-rios/alexandria-api/blob/main/config.toml.example)
-and in the
-[Operations & Infrastructure Document](https://github.com/artur-rios/alexandria-api/blob/main/docs/requirements/Operations%20%26%20Infrastructure%20Document.md).
-
-The server has no packaged release. Build it from source.

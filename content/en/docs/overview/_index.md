@@ -15,8 +15,9 @@ organise all of it.
 
 Two properties shape everything else about it:
 
-**It is single-user.** One owner, one account. There is no sharing, no second
-profile, no roles, and no multi-tenancy anywhere in the design.
+**It is single-user.** One owner, on one machine, with no account to create and
+no sign-in. There is no sharing, no second profile, no roles, and no
+multi-tenancy anywhere in the design.
 
 **It does not own your files.** Alexandria stores metadata and a path — never
 your file's contents. It never re-encodes, transcodes, duplicates, or relocates
@@ -31,15 +32,18 @@ a file, and it removes one from disk only when you explicitly ask it to.
 | Comics | Comic book archives, tracked per issue |
 | Text | Markdown and plain text, editable in place with a live preview |
 | Web | Saved HTML pages |
-| Images | Viewed in list, detailed-list, and grid layouts |
+| Images | Viewed in list and grid layouts |
 | Bookmarks | Browser bookmarks, organised alongside everything else |
 
 ## What you can do with it
 
-- Register one or more library folders and run indexing and re-scans from the
-  interface.
-- Browse the catalog by file type, and search, filter, and sort across all of
-  it.
+- Add one or more libraries and scan them again whenever they change, from the
+  Library menu.
+- Pin and favorite libraries, and rename them at any time, even during a scan.
+- Browse a library as its folders, in a grid or a list, filtered by type and
+  sorted; search across every library.
+- See your favorite libraries and the totals — how many libraries, and how
+  many files of each type — on Home.
 - Play video with full screen, seeking, subtitle tracks, and audio tracks.
 - View PDFs, e-books, comic books, images, saved HTML, and rendered Markdown.
 - Edit Markdown and text files in place, with a live preview.
@@ -49,8 +53,6 @@ a file, and it removes one from disk only when you explicitly ask it to.
 - Track books and comics in reading lists, with per-issue progress.
 - Soft-delete, restore, and purge catalog records, and separately purge a file
   from disk.
-- Register the owner account, log in, and recover access with one of ten
-  single-use codes minted at registration.
 
 The interface adapts to window and screen size, in light and dark themes, in
 Brazilian Portuguese and English.
@@ -64,25 +66,11 @@ Being clear about the boundaries is part of the design, not an omission.
 - **No file management.** Alexandria never moves, copies, or duplicates a file.
 - **No music.** Music lives in [Orpheus](https://github.com/artur-rios/orpheus),
   a separate project.
-- **No second account, no sharing, no profiles, no roles** — inside Alexandria.
-  There is one owner, and every catalog operation belongs to them. The local
-  account the desktop application uses is that one account. In external mode
-  Alexandria accepts anyone
-  [Heimdall](https://github.com/artur-rios/heimdall-api) places in its scope,
-  but they all act as the same single owner: Alexandria keeps no per-person
-  state, draws no distinction between them, and honours none of Heimdall's own
-  roles. Who may be the owner is decided there; what an owner may do is the
-  same either way.
-- **No mail from Alexandria**, in either authentication mode. With the local
-  account the desktop application uses, the address is a login identifier and
-  nothing else, and recovery goes through single-use codes rather than a
-  message. In external mode the account belongs to
-  [Heimdall](https://github.com/artur-rios/heimdall-api), which does send mail
-  — email verification, password recovery, two-factor codes — but it sends it
-  as the identity provider. Alexandria still sends none, and never sees a
-  password. See [Architecture]({{< relref "/docs/architecture" >}}).
-- **No server, no cloud, no synchronisation** in the desktop application. It
-  runs entirely on your machine.
+- **No accounts, no sharing, no profiles, no roles.** Alexandria opens straight
+  into the application: there is nothing to register and no password to type. There is one owner, and every catalog operation belongs to them.
+- **No mail from Alexandria.** It sends none and asks for no address.
+- **No server, no cloud, no synchronisation.** It runs entirely on your
+  machine, and the core has no network interface at all.
 - **No mobile, web, or macOS build.** Windows and Ubuntu only.
 
 ## How it is specified

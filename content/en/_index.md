@@ -37,8 +37,8 @@ images, saved HTML, and rendered Markdown.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fa-solid fa-layer-group" title="Organise it your way" %}}
-Collections, watchlists with per-episode progress, and reading lists with
-per-issue progress — across the whole catalog.
+Pin and favorite your libraries, browse them as the folders you already have,
+and keep collections, watchlists and reading lists across the whole catalog.
 {{% /blocks/feature %}}
 
 {{% /blocks/section %}}
@@ -46,8 +46,8 @@ per-issue progress — across the whole catalog.
 {{% blocks/section color="light" type="row" %}}
 
 {{% blocks/feature icon="fa-solid fa-laptop" title="One local application" %}}
-The desktop front-end links the Rust core in process. No server, no cloud, no
-synchronisation, and nothing to configure after you install it.
+The desktop application links the Rust core in process. No account, no server,
+no cloud, no synchronisation, and nothing to configure after you install it.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fa-solid fa-shield-halved" title="Your files stay yours" %}}
@@ -55,9 +55,9 @@ Deletion is two-phase — soft delete, then restore or purge — and removing a
 file from disk always takes a separate, explicit action.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fa-brands fa-rust" title="One core, two surfaces" %}}
-A REST/JSON server and a C ABI share the same Rust domain library, so the two
-transports cannot drift apart.
+{{% blocks/feature icon="fa-brands fa-rust" title="A Rust core" %}}
+The domain logic lives in one Rust library, and the desktop application calls
+it through a C ABI.
 {{% /blocks/feature %}}
 
 {{% /blocks/section %}}
