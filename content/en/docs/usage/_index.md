@@ -8,30 +8,17 @@ description: >
 
 ## First run
 
-### 1. Create your account
+There is no account to create and no password to type: Alexandria opens
+straight into the application.
 
-Alexandria has exactly one owner. On first launch you register that account
-with an email address and a password.
-
-The address is a **login identifier and nothing else** — Alexandria sends no
-mail of any kind. In place of email recovery, registration mints **ten
-single-use recovery codes**. They are shown once. Save them somewhere outside
-Alexandria; each one gets you back in exactly once, and you can ask for a fresh
-set at any time.
-
-That is the local account the desktop application uses. A server running in
-external mode instead defers to
-[Heimdall](https://github.com/artur-rios/heimdall-api), where the account is
-registered and where verification, password recovery, and two-factor all
-happen; there is nothing to register in Alexandria, and none of this section
-applies. See [Architecture]({{< relref "/docs/architecture" >}}).
-
-### 2. Register a library folder
+### 1. Add a library
 
 Alexandria does not go looking for files on its own. You tell it which folders
-are yours, and it confines itself to those. You can register more than one.
+are yours, and it confines itself to those. Choose **Library**, then **Add
+library…**, and pick a folder. You can add as many libraries as you like. If you
+have none yet, Home guides you to this step.
 
-### 3. Run the first index
+### 2. Run the first index
 
 Indexing walks each registered folder, classifies every file it recognises by
 type, records what the directory listing already knows about it — name, size,
@@ -53,14 +40,41 @@ that has gone is flagged as missing rather than deleted. Your own metadata edits
 are never overwritten. See [Architecture]({{< relref "/docs/architecture" >}})
 for both pipelines.
 
-## Browsing
+## The left menu
 
-The catalog is organised by file type: movies, series, HTML pages,
-Markdown and text notes, PDFs and e-books, comic books, images, and bookmarks.
+The menu on the left lists, top to bottom: **Home**, **Bookmarks**, your
+**pinned** libraries in alphabetical order, a divider, and your other libraries
+in alphabetical order. There are no entries per file type. If the window is
+narrow the menu scrolls, so no library is ever cut off.
 
-Each type can be viewed as a **list**, a **detailed list**, or a **grid** —
-pick whichever suits what you are looking at. Search, filtering, and sorting
-work across the whole catalog, not just the type you are currently in.
+Right-click a library (or long-press it) for **Pin** or **Unpin**, **Add to
+favorites** or **Remove from favorites**, and **Rename…**. The choices are kept
+by the core and survive a restart.
+
+## Home
+
+Home shows your **favorite** libraries, in alphabetical order, and the totals
+across every library: how many libraries you have, and how many files of each
+type, zeroes included. With no libraries at all it guides you to add one.
+
+## Browsing a library
+
+Click a library to open it in the main area as its folders. The header shows
+the library's name, the **Pin** and **Favorite** toggles, and a menu with
+**Rename**, **Scan again**, **Move…** and **Remove**. Breadcrumbs show where you
+are, and folders come first, then files.
+
+Show the contents as a **grid** or a **list**, filter by one file type or show
+all of them, and pick a sort order. That choice is the same for every library.
+Every action on a file is here: open, play, read, edit, rename, delete, and
+details. Search works across every library, not just the one you are in.
+
+## Managing libraries
+
+The **Library** menu in the menu bar starts with **Add library…** and **Manage
+libraries…**. The latter lists every library, with rename, scan again, move,
+and remove for each. A library can be renamed at any time, even while it is
+being scanned.
 
 ## Playing and reading
 
@@ -84,7 +98,7 @@ Alexandria rewrites the metadata; it never re-encodes the media.
 
 ## Organising
 
-**Collections** group any files and bookmarks together, across types. A file
+**Collections** group any files and bookmarks together, across libraries. A file
 can belong to more than one.
 
 **Watchlists** track movies and series, with **per-episode progress** — so a
@@ -104,25 +118,11 @@ explicit act.
 | **Purge record** | Removed from the catalog | Untouched |
 | **Purge on disk** | Removed from the catalog | **Deleted**, after an explicit confirmation |
 
-If you soft-delete something by mistake, restore it. The file was never in
+Deleted files are reached through **Deleted items** in the menu bar. If you
+soft-delete something by mistake, restore it there. The file was never in
 danger.
-
-## Getting back in
-
-Log in with your email and password. If you have lost the password, use one of
-the ten recovery codes from registration — each works once. You can regenerate
-the full set at any time, which invalidates the old ones.
 
 ## Preferences
 
 Alexandria adapts to window and screen size, ships **light and dark themes**,
 and is translated into **Brazilian Portuguese and English**.
-
-## Using the HTTP API instead
-
-If you are driving Alexandria from your own client rather than the desktop
-application, the REST/JSON surface is documented in the API repository's README
-and its
-[Use Case Specification Document](https://github.com/artur-rios/alexandria-api/blob/main/docs/requirements/Use%20Case%20Specification%20Document.md).
-Start with [Installation]({{< relref "/docs/installation" >}}) for how to run
-the server.

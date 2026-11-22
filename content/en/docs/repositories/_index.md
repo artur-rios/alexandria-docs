@@ -10,15 +10,9 @@ Alexandria is three repositories.
 
 | Repository | What it holds |
 |---|---|
-| [alexandria-api](https://github.com/artur-rios/alexandria-api) | The Rust workspace: `alexandria-core` (the domain), `alexandria-http` (the axum REST/JSON server), and `alexandria-ffi` (the C ABI). |
+| [alexandria-api](https://github.com/artur-rios/alexandria-api) | The Rust workspace: `alexandria-core` (the domain) and `alexandria-ffi` (the C ABI). |
 | [alexandria-ui](https://github.com/artur-rios/alexandria-ui) | The Flutter desktop front-end, and the release pipeline that packages it together with the core for Windows and Ubuntu. |
 | [alexandria-docs](https://github.com/artur-rios/alexandria-docs) | This site. |
-
-One more repository sits next to those three without being part of Alexandria:
-
-| Repository | What it holds |
-|---|---|
-| [heimdall-api](https://github.com/artur-rios/heimdall-api) | The identity API Alexandria validates tokens against in external mode. Its [documentation site](https://docs.artur-rios.tech/heimdall-api/) covers its overview, architecture, API reference, and requirements. |
 
 ## The specifications
 

@@ -3,64 +3,16 @@ title: Architecture
 linkTitle: Architecture
 weight: 20
 description: >
-  One Rust core, two transports, and one desktop application — and how a file
+  One Rust core, one desktop application — and how a file
   travels through them.
 ---
 
-## One core, two transports
+## One core, one desktop application
 
-Alexandria's domain logic lives in a single Rust library. Two thin transport
-layers sit on top of it: an HTTP REST/JSON server and a C ABI. Because both
-call the same handlers, the two surfaces cannot drift apart.
-
-```mermaid
-graph TD
-    FL["Flutter Desktop Front-end"]
-    HTTP["alexandria-http<br/>axum REST/JSON server"]
-    FFI["alexandria-ffi<br/>C ABI (cbindgen)"]
-    CORE["alexandria-core<br/>Command/Query + repositories + auth"]
-    DB[("SQLite")]
-    FS["Local filesystem"]
-    AUTH["Heimdall<br/>identity API (external mode)"]
-
-    FL -->|HTTP / REST-JSON| HTTP
-    FL -->|FFI, in process| FFI
-    HTTP --> CORE
-    FFI --> CORE
-    CORE --> DB
-    CORE -->|index / rename / write text| FS
-    CORE -->|validate JWT| AUTH
-```
-
-`alexandria-core` follows a Command/Query baseline. Repository and auth-service
-**traits** are what make its handlers unit-testable; `alexandria-http` and
-`alexandria-ffi` add transport and nothing else.
-
-## Who checks the credentials
-
-Exactly one authentication mode is active at runtime.
-
-**Local mode** is what the desktop application uses. Alexandria owns the single
-account itself: registration, login, and recovery through single-use codes, with
-nothing else involved.
-
-**External mode** hands that job to
-[Heimdall](https://github.com/artur-rios/heimdall-api), the identity API this
-project runs alongside, in which Alexandria is registered as an application
-inside a scope. The client logs in against Heimdall directly — completing
-two-factor there if Heimdall asks for it — and then presents the JWT it gets
-back to Alexandria as a bearer token. Alexandria only validates that token and
-the scope it carries; it never sees a password, proxies no login, and gains no
-endpoints of its own.
-
-Heimdall's own documentation — its overview, architecture and sequence
-diagrams, API reference, and requirements — is at
-[docs.artur-rios.tech/heimdall-api](https://docs.artur-rios.tech/heimdall-api/).
-
-## Two ways to deploy it
-
-The same core supports two very different shapes. The desktop application uses
-the first.
+Alexandria's domain logic lives in a single Rust library. A thin C ABI sits on
+top of it, and the Flutter desktop application calls the core through that ABI,
+in the same process. Nothing else calls the core: it has no network interface
+and no notion of who is using it.
 
 ```mermaid
 graph LR
@@ -68,23 +20,23 @@ graph LR
         direction TB
         A1["Flutter UI"] -->|C ABI| A2["alexandria-core"]
         A2 --> A3[("SQLite")]
-    end
-
-    subgraph server["Server — two processes"]
-        direction TB
-        B1["Any HTTP client"] -->|REST/JSON| B2["alexandria-http"]
-        B2 --> B3["alexandria-core"]
-        B3 --> B4[("SQLite")]
+        A2 -->|index / rename / write text| A4["Local filesystem"]
     end
 ```
+
+`alexandria-core` follows a Command/Query baseline. Repository **traits** are
+what make its handlers unit-testable; `alexandria-ffi` adds the C ABI and
+nothing else.
+
+There is no authentication anywhere: the application belongs to the person
+using the machine, so the core has nothing to check. The core also keeps the
+choices you make about your libraries — pinned, favorite, and name — so they
+survive a restart, and it answers the catalog statistics shown on Home.
 
 In desktop mode there is no network hop between the interface and its data, and
 nothing to start, stop, or configure separately. That is why installing
 Alexandria installs one thing — see
 [Installation]({{< relref "/docs/installation" >}}).
-
-Server mode exists for any client in any language that would rather speak HTTP.
-It is not what the desktop application uses, and it has no packaged release.
 
 ## How a file gets indexed
 
@@ -253,7 +205,7 @@ where the split between "answer now" and "work for minutes" is visible.
 sequenceDiagram
     autonumber
     participant U as Owner
-    participant S as Library folders screen
+    participant S as Libraries screen
     participant C as IndexRunsController
     participant G as Index gateway
     participant K as Core, over FFI
@@ -263,7 +215,7 @@ sequenceDiagram
     S->>C: startIndex(root)
     C->>G: startIndex(root, priority, session)
     G->>K: alexandria_index_start
-    K->>K: authenticate, validate the root
+    K->>K: validate the root
     K->>W: spawn the walk
     K-->>G: run id, immediately
     G-->>C: started

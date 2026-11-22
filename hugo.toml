@@ -69,7 +69,7 @@ disableKinds = ["taxonomy", "term"]
       name = "alexandria-api"
       url = "https://github.com/artur-rios/alexandria-api"
       icon = "fab fa-github"
-      desc = "The Rust core, HTTP server, and FFI surface"
+      desc = "The Rust core and its C ABI"
     [[params.links.developer]]
       name = "alexandria-ui"
       url = "https://github.com/artur-rios/alexandria-ui"
